@@ -1,4 +1,4 @@
-import { DOMLayer } from 'gradient-base'
+import { _init } from 'gradient-base'
 
 /**
  * @typedef {(number[][]|string[])} Colors - colors input 
@@ -38,26 +38,46 @@ import { DOMLayer } from 'gradient-base'
 
 /**
  * @class Svg
- * @extends {DOMLayer}
  * @classdesc
  * Creates Svg gradient elements
- * @param {Colors} colors
- * @param {Options} options
  */
-export default class Svg extends DOMLayer {
-    constructor(colors, options) {
-        super(colors, options)
+export default class Svg {
+    constructor() {
+        /**
+         * @property {(Colors|null)} colors - checked colors parameter
+         */
+        this._colors = null
+
+        /**
+         * @property {(Options|null)} _options
+         * @private
+         */
+        this._options = null
     }
 
     /**
      * Creates full svg gradient element with color stops
      * @returns {SVGElement}
      */
-    get() {
+    get(colors, options) {
+        this._init(colors, options)
         const gradient = this._gradientElement(this.options.svg.type)
         const stops = this._stops()
         stops.forEach(stop => gradient.appendChild(stop))
         return gradient
+    }
+
+    /**
+     * Creates base and assigns colors and options to a constructor
+     * @param {Colors} colors 
+     * @param {Options} options 
+     * @returns {void}
+     * @private
+     */
+    _init(colors, options) {
+        const initialContent = _init(colors, options)
+        this.colors = initialContent.colors
+        this.options = initialContent.options
     }
 
     /**

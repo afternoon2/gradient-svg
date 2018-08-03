@@ -24,7 +24,7 @@ test(
                 gradientUnits: 'userSpaceOnUse'
             }
         }
-        const overlay = new Svg(colors, options)
-        expect(overlay.get()).toBeInstanceOf(SVGElement)
+        const overlay = new Svg()
+        expect(overlay.get(colors, options)).toBeInstanceOf(SVGElement)
     }
 )
