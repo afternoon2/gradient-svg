@@ -78,7 +78,7 @@ export default class Svg {
     _gradientElement(type) {
         const gradient = this._svgElement(`${type}Gradient`)
         const attrs = /((id)|([c|f|x|y|r][x|y|1|2]?)|(gradientUnits))/
-        Object.entries(this.options)
+        Object.entries(this.options.svg)
             .filter(attr => attrs.test(attr[0]))
             .forEach(attr => gradient.setAttribute(attr[0], attr[1]))
         if (this.options.svg.angle) {
