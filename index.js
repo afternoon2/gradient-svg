@@ -49,24 +49,11 @@ export default class Svg {
      * @returns {SVGElement}
      */
     get(colors, options) {
-        this._init(colors, options)
+        _init(this, colors, options)
         const gradient = this._gradientElement(this.options.svg.type)
         const stops = this._stops()
         stops.forEach(stop => gradient.appendChild(stop))
         return gradient
-    }
-
-    /**
-     * Creates base and assigns colors and options to a constructor
-     * @param {Colors} colors 
-     * @param {Options} options 
-     * @returns {void}
-     * @private
-     */
-    _init(colors, options) {
-        const initialContent = _init(colors, options)
-        this.colors = initialContent.colors
-        this.options = initialContent.options
     }
 
     /**
@@ -80,7 +67,11 @@ export default class Svg {
         const attrs = /((id)|([c|f|x|y|r][x|y|1|2]?)|(gradientUnits))/
         Object.entries(this.options.svg)
             .filter(attr => attrs.test(attr[0]))
-            .forEach(attr => gradient.setAttribute(attr[0], attr[1]))
+            .forEach(attr => {
+                if (attr !== 'type') {
+                    gradient.setAttribute(attr[0], attr[1])
+                }
+            })
         if (this.options.svg.angle) {
             gradient.setAttribute('gradientTransform', `rotate(${this.options.svg.angle})`)
         }
