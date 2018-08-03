@@ -1,9 +1,8 @@
-import Base from 'gradient-base'
+import { DOMLayer } from 'gradient-base'
 
 /**
  * @typedef {(number[][]|string[])} Colors - colors input 
  */
-
 
 /**
  * @typedef {object} BaseOptions - Base configuration object
@@ -39,28 +38,15 @@ import Base from 'gradient-base'
 
 /**
  * @class Svg
+ * @extends {DOMLayer}
  * @classdesc
  * Creates Svg gradient elements
  * @param {Colors} colors
  * @param {Options} options
  */
-export default class Svg {
+export default class Svg extends DOMLayer {
     constructor(colors, options) {
-        /**
-         * @property {Base} _base
-         * @private
-         */
-        this._base = new Base(colors, options.base)
-
-        /**
-         * @property {number[][]} colors
-         */
-        this.colors = this._base.get()
-
-        /**
-         * @property {Options} options
-         */
-        this.options = options
+        super(colors, options)
     }
 
     /**
