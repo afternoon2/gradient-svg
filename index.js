@@ -42,18 +42,7 @@ import { _init } from 'gradient-base'
  * Creates Svg gradient elements
  */
 export default class Svg {
-    constructor() {
-        /**
-         * @property {(Colors|null)} colors - checked colors parameter
-         */
-        this._colors = null
-
-        /**
-         * @property {(Options|null)} _options
-         * @private
-         */
-        this._options = null
-    }
+    constructor() {}
 
     /**
      * Creates full svg gradient element with color stops
