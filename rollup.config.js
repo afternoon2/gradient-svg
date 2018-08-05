@@ -14,29 +14,18 @@ const babelConf = {
 export default {
     input: 'index.js',
     external: ['chroma-js', 'gradient-base'],
-    globals: {
-        'chroma-js': 'chroma',
-        'gradient-base': 'Base'
-    },
     output: [
         {
             extend: true,
             format: 'umd',
-            file: './dist/gradient-svg.umd.js',
-            name: 'Css',
-            sourcemap: true
-        },
-        {
-            extend: true,
-            format: 'es',
-            file: './dist/gradient-svg.mjs',
-            name: 'Css',
-            sourcemap: true
+            file: './gradient-svg.js',
+            name: 'Svg',
+            globals: {
+                'chroma-js': 'chroma',
+                'gradient-base': 'Base'
+            }
         }
     ],
-    watch: {
-        include: 'src/**'
-    },
     plugins: [
         resolve(),
         eslint(eslintConf),
