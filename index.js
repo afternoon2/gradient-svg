@@ -1,4 +1,4 @@
-import { _init } from 'gradient-base'
+import Base from 'gradient-base'
 
 /**
  * @typedef {(number[][]|string[])} Colors - colors input 
@@ -42,14 +42,21 @@ import { _init } from 'gradient-base'
  * Creates Svg gradient elements
  */
 export default class Svg {
-    constructor() {}
+    constructor() {
+        /**
+         * @property {Base} _base - Base class instance
+         * @private
+         */
+        this._base = new Base()
+    }
 
     /**
      * Creates full svg gradient element with color stops
      * @returns {SVGElement}
      */
     get(colors, options) {
-        _init(this, colors, options)
+        this.colors = this._base.get(colors, options.base)
+        this.options = options
         const gradient = this._gradientElement(this.options.svg.type)
         const stops = this._stops()
         stops.forEach(stop => gradient.appendChild(stop))
