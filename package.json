@@ -1,6 +1,6 @@
 {
   "name": "gradient-svg",
-  "version": "0.0.0-development",
+  "version": "1.0.0",
   "description": "Svg module of the gradient.js library",
   "main": "gradient-svg.js",
   "scripts": {
