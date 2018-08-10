@@ -75,7 +75,7 @@ export default class Svg {
         Object.entries(this.options.svg)
             .filter(attr => attrs.test(attr[0]))
             .forEach(attr => {
-                if (attr !== 'type') {
+                if (attr[0] !== 'type') {
                     gradient.setAttribute(attr[0], attr[1])
                 }
             })
