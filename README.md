@@ -42,7 +42,10 @@ const gradient = svg.get([
         r: 0.3,
         spreadMethod: 'reflect'
     }
-})
+}, 
+/* third parameter - raw - is by default set to false, so it returns the svg gradient element. 
+Set to true if you want to get an object. */
+)
 ```
 
 ## Options
