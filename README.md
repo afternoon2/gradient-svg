@@ -1,3 +1,6 @@
+# Deprecated
+## Better check [gradient-js](https://github.com/afternoon2/gradient-js).
+
 # gradient-svg.js
 
 This module creates svg gradient output for gradient.js modules.
